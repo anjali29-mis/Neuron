@@ -7,9 +7,10 @@ def main(data, eta, epochs, filename, plotfileName):
     
     df = pd.DataFrame(data)
 
-    print(df)
+    print(df) ###
 
     X,y = prepare_data(df)
+
 
     model = Perceptron(eta=eta, epochs=epochs)
     model.fit(X, y)
@@ -20,15 +21,13 @@ def main(data, eta, epochs, filename, plotfileName):
     save_plot(df, plotfileName, model)
 
 if __name__ == "__main__": # << Entry Point
-    AND = {
+    OR = {
         "x1": [0,0,1,1],
         "x2": [0,1,0,1],
-        "y": [0,0,0,1],
-    } ##
-
-
+        "y": [0,1,1,1],
+    }
 
     ETA = 0.3 # 0 and 1
     EPOCHS = 10
 
-    main(data=AND, eta = ETA, epochs =EPOCHS, filename = "and.model", plotfileName = "and.png" )
+    main(data=OR, eta = ETA, epochs =EPOCHS, filename = "or.model", plotfileName = "or.png" )
